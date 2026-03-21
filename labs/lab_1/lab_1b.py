@@ -52,6 +52,21 @@ def check_input_float(prompt: str) -> float:
         except ValueError:
             print("Invalid input. Please enter a valid number.")
 
+def check_input_operation(prompt: str) -> str:
+    """
+    Function to request user input and verify it is an operation.
+    
+    Returns:
+    str: The user input
+    """
+
+    while True:
+        op = input(prompt).strip().lower()
+        if (op == "add" or op == "subtract" or op == "multiply" or op == "divide"):
+            return op
+        else:
+            print("Invalid input. Please enter a valid operation (add, subtract, multiply, divide).")
+
 def main():
     
     print(f"===== Simple Calculator =====")
@@ -59,7 +74,7 @@ def main():
     # Ask the user for sample input    
     num1 = check_input_float("Enter the first number: ")
     num2 = check_input_float("Enter the second number: ")
-    operation = input("Enter the operation (add, subtract, multiply, divide): ").strip().lower()
+    operation = check_input_operation("Enter the operation (add, subtract, multiply, divide): ").strip().lower()
 
     # Perform the calculation and display the result
     result = simple_calculator(operation, num1, num2)
